@@ -26,10 +26,14 @@ public class MusicManager : MonoBehaviour {
         AudioClip thisLevelMusic = levelMusicChangeArray[level];
         Debug.Log("Playing clip: " + thisLevelMusic);
 
-        if (thisLevelMusic) { // If there's some music attached
+        if (thisLevelMusic && thisLevelMusic != audioSource.clip) { // If there's some music attached
             audioSource.clip = thisLevelMusic;
             audioSource.loop = true;
             audioSource.Play();
         }
+    }
+
+    public void SetVolume(float customVolume) {
+        audioSource.volume = customVolume;
     }
 }
